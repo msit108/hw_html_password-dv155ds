@@ -3,23 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <title>亂數密碼產生器</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 <script src="js/jquery.js"></script>
 <script src="js/seedrandom.js"></script>
+    
+
+   
+    <script src="js/bootstrap.min.js"></script>
 <style>
 #randomTable {
     font-family: monospace;
     font-size: 2.0em;
 }
+ 33body{
+    background-image:url('back.png');
+    
+    background-size: cover;
+    }  
 </style>
 </head>
 <body>
+  
 
-請輸入亂數表的編號：<input type="text" id="txtSeed" value="" placeholder="隨便輸入數字"/>
-    </br>
-請輸入亂數表的行數：<input type="text" id="txtline" value="" placeholder="輸入亂數的行數"/>
-    </br>
+請輸入亂數表的編號：<br />
+    <div1>
+    <input type="text" id="txtSeed" value="" placeholder="隨便輸入數字"/>
+    </div1>
+        </br>
+請輸入亂數表的行數：
+    <div>
+    <input type="text" id="txtline" value="" placeholder="輸入亂數的行數"/>
+    </div>
+        </br>
 
-   <form name="form_name" id="form_name">
+   <form  name="form_name" id="form_name">
      請選擇亂數產生的形式: <select name="type">
  <option value="1" >純數字</option>
  <option value="2" >數字+小寫字母</option>
@@ -27,11 +44,12 @@
 </select>
       
        <br />
-     p.s:字母不含o、O、I、l 以免造成混淆
+ <em>    p.s:字母不含o、O、I、l 以免造成混淆 </em>
     </form>
     
-    <input type="button" id="btnGo" value="產生亂數表" />
+   
     
+    <button type="button" class="btn btn-success" id="btnGo">產生密碼</button>
 
 <div id="randomTable">
 </div>
