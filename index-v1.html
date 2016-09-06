@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>亂數密碼產生器</title>
+<script src="js/jquery.js"></script>
+<script src="js/seedrandom.js"></script>
+<style>
+#randomTable {
+    font-family: monospace;
+    font-size: 2.0em;
+}
+</style>
+</head>
+<body>
+
+請輸入亂數表的編號：<input type="text" id="txtSeed" value="" placeholder="隨便輸入數字"/>
+    </br>
+請輸入亂數表的行數：<input type="text" id="txtline" value="" placeholder="輸入亂數的行數"/>
+    </br>
+
+   <form name="form_name" id="form_name">
+     請選擇亂數產生的形式: <select name="type">
+ <option value="1" >純數字</option>
+ <option value="2" >數字+小寫字母</option>
+ <option value="3" >數字+大小寫字母</option>
+</select>
+      
+       <br />
+     p.s:字母不含o、O、I、l 以免造成混淆
+    </form>
+    
+    <input type="button" id="btnGo" value="產生亂數表" />
+    
+
+<div id="randomTable">
+</div>
+
+<script>
+
+
+
+
+
+
+    $("#btnGo").click(function () {
+        var x = txtline.value;
+        var form = document.getElementById("form_name");
+        var type = form.type.value;
+        //alert(type);
+
+        if(type == "1"){
+            var result = "";
+            var sPool = "0123456789";
+            Math.seedrandom($("#txtSeed").val()); // 設定亂數種子
+            var iRandom = 0; var ch = "?";
+            for (iRow = 1; iRow <= x; iRow++) {
+                var sLine = (iRow + 100).toString().substr(1, 2) + ": ";
+                for (iCol = 1; iCol <= 10; iCol++) {
+                    iRandom = Math.floor(Math.random() * sPool.length);
+                    ch = sPool.substr(iRandom, 1);
+                    sLine += ch;
+                }
+                result += sLine + "<br>";
+            }
+        }
+
+        if (type == "2") {
+            var result = "";
+            var sPool = "abcdefghijkmnpqrstuvwxyz0123456789";
+            Math.seedrandom($("#txtSeed").val()); // 設定亂數種子
+            var iRandom = 0; var ch = "?";
+            for (iRow = 1; iRow <= x; iRow++) {
+                var sLine = (iRow + 100).toString().substr(1, 2) + ": ";
+                for (iCol = 1; iCol <= 10; iCol++) {
+                    iRandom = Math.floor(Math.random() * sPool.length);
+                    ch = sPool.substr(iRandom, 1);
+                    sLine += ch;
+                }
+                result += sLine + "<br>";
+            }
+        }
+
+        if (type == "3") {
+            var result = "";
+            var sPool = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz0123456789";
+            Math.seedrandom($("#txtSeed").val()); // 設定亂數種子
+            var iRandom = 0; var ch = "?";
+            for (iRow = 1; iRow <= x; iRow++) {
+                var sLine = (iRow + 100).toString().substr(1, 2) + ": ";
+                for (iCol = 1; iCol <= 10; iCol++) {
+                    iRandom = Math.floor(Math.random() * sPool.length);
+                    ch = sPool.substr(iRandom, 1);
+                    sLine += ch;
+                }
+                result += sLine + "<br>";
+            }
+        }
+
+	$("#randomTable").html(result);
+});
+
+</script>
+
+</body>
+</html>
